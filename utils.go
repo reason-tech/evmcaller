@@ -43,6 +43,8 @@ func getArgs(method abi.Method, args []string) []interface{} {
 			s[i] = boolean
 		case abi.AddressTy:
 			s[i] = common.HexToAddress(args[i])
+		case abi.HashTy:
+			s[i] = common.HexToHash(args[i])
 		case abi.BytesTy:
 			s[i] = parsedBytes(false, -1, args[i])
 		case abi.FixedBytesTy:
