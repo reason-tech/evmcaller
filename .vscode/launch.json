@@ -12,15 +12,22 @@
             "program": "${fileDirname}",
             "env": {"ACCOUNT_PRIVATE_KEY":"bc2769d009bd8a3ee731e1502e5c01afd21c28a3d057af668e01b46f237e8522"},
             "args": [
-                "getabi", 
-                // "-t", 
-                // "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
-                // "-u",
-                // "https://cosmopolitan-long-sound.matic.discover.quiknode.pro/74705b878e5951e20d0a7cefd86f6abf192d22da/",
-                // "83412312344534634564564353453454",
-                // "12312344534634564564353453454",
-                // "112312344534634564564353453454",
+                "name",
+                "1",
             ]
+            // "args": [
+            //     "safeTransferFrom0", 
+            //     "-c",
+            //     "k",
+            //     "-t", 
+            //     "0x2a17E171D110E8C62562F84837B1E3b55159b05B",
+            //     "0x2a17E171D110E8C62562F84837B1E3b55159b05B",
+            //     "0x2a17E171D110E8C62562F84837B1E3b55159b05B",
+            //     "1",
+            //     "0x",
+            //     // "-u",
+            //     // "https://cosmopolitan-long-sound.matic.discover.quiknode.pro/74705b878e5951e20d0a7cefd86f6abf192d22da/",
+            // ]
         }
     ]
 }
