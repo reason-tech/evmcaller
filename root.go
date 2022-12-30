@@ -158,12 +158,13 @@ func init() {
 						log.Fatalln("CallContract: ", err)
 					}
 
-					unpack, err := parsedABI.Unpack(cmd.Use, res)
+					unpacks, err := parsedABI.Unpack(cmd.Use, res)
 					if err != nil {
-						log.Fatalln("Unpack: ", unpack)
+						log.Fatalln("Unpack: ", unpacks)
 					}
 
-					fmt.Println(unpack...)
+					printUnpack(unpacks)
+					fmt.Println()
 				} else {
 					msg := ethereum.CallMsg{From: address, To: &contract, Value: value, Data: callData}
 					gasLimit, err := client.EstimateGas(context.Background(), msg)

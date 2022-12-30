@@ -2,11 +2,13 @@ package main
 
 import (
 	"encoding/hex"
+	"fmt"
 	"io"
 	"log"
 	"math/big"
 	"net/http"
 	"os"
+	"reflect"
 	"strconv"
 
 	"github.com/ethereum/go-ethereum/accounts/abi"
@@ -45,6 +47,8 @@ func getArgs(method abi.Method, args []string) []interface{} {
 			s[i] = parsedBytes(false, -1, args[i])
 		case abi.FixedBytesTy:
 			s[i] = parsedBytes(true, size, args[i])
+		default:
+			log.Fatalln("UNSUPPORT TYPE", t, size)
 		}
 	}
 	return s
@@ -310,4 +314,18 @@ func getFile(url, fileName string) int64 {
 	defer file.Close()
 
 	return size
+}
+
+func printUnpack(unpacks []interface{}) {
+	for i := 0; i < len(unpacks); i++ {
+		kind := reflect.TypeOf(unpacks[i]).Kind()
+		if kind == reflect.Slice || kind == reflect.Array {
+			value := reflect.ValueOf(unpacks[i])
+			slice := reflect.MakeSlice(reflect.TypeOf([]byte{}), value.Len(), value.Len())
+			reflect.Copy(slice, value)
+			fmt.Print(hex.EncodeToString(slice.Interface().([]byte)))
+			continue
+		}
+		fmt.Print(unpacks[i])
+	}
 }
